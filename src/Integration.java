@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
  */
 
 /**
- * @author serra
+ * @author Joseph Serrano
  *
  */
 
