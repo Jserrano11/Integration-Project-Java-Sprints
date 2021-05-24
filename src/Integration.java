@@ -29,8 +29,8 @@ public class Integration {
 		/*The term variable is some sort of data that has an allocated portion of memory
 		 * and is typically used to store values and information to use within your program
 		 */
-		/*Scope in computer programming typically is the lifetime of a specified variable.
-		 * Basically how long that variable will be accessible. 
+		/*Scope in computer programming typically refers to the idea that a variable can only be 
+		 * accessed within a certain method.
 		 */
 		System.out.println("Done!");
 		
@@ -45,35 +45,36 @@ public class Integration {
 		 * or put in a variable. 
 		 */
 		GreetingObject.Greet(userName);
-
+/*Get the input of whether user would like to calculate a meal, budget,or exit*/
 		System.out.println("To calculate the total for a meal, enter meal,"
 				+ "if you would like to budget please type budget now."
 				+ " If you would like to close the app, type exit.");
-		String optionSelect = sc.nextLine();
+		String optionSelect = sc.next();
 
-
+//Get the total price of the meal
 			System.out.println("First, enter the total price of your meal: ");
 			double mealPrice = sc.nextDouble();
-			
+//Get the Local Sales Tax in the area
 			System.out.println("Next, enter your local sales tax percentage(i.e. "
 					+ ".06): ");
 			double taxPercentage = sc.nextDouble();
-			
+//Get the desired tip percentage
 			System.out.println("Finally, enter your desired tip percentage(i.e. "
 					+ ".15, .18, or .2): ");
 			double tipPercentage = sc.nextDouble();
-			
+			/*calculate total without tip and total without tax and add that to your
+			 * original meal price.*/
 			double totalWithouttip = (mealPrice * taxPercentage);
 		
 			double totalWithouttax = (mealPrice * tipPercentage);
 			
 			double totalPrice = (totalWithouttip + totalWithouttax + mealPrice);
-			
+//Output total cost of meal
 			System.out.println("The total cost of your meal is going to be: " + df2.format(totalPrice));
-			
+			/*Test wheter or not the user wants to also budget or exit the app now*/
 			System.out.println("Did you also need help budgeting your finances " + userName+"?");
 			System.out.println("If so, please type yes, otherwise please type no now.");
-			String testVariable = sc.nextLine();
+			String testVariable = sc.next();
 			
 			if (testVariable.equals("Yes") || testVariable.equals("yes")) {
 				optionSelect.equals("Budget");
@@ -81,27 +82,27 @@ public class Integration {
 			if (testVariable.equals("No") || testVariable.equals("no")) {
 				optionSelect.equals("Exit");
 			}
-		
+//Budgeting portion of the app
 		if (optionSelect.equals("Budget") || optionSelect.equals("budget")); {
 			
 			System.out.println("The next series of questions will be within the "
 					+ "time frame of a monthly basis.");
-			
+//Get monthly income from user
 			System.out.println("Start now by entering your monthly income: ");
 			double monthlyIncome = sc.nextDouble();
-			
+//Get extra money or disposable income
 			System.out.println("Now, is there any money that you make on the side?"
 					+ "(i.e. disposable income): ");
 			double disposableIncome = sc.nextDouble();
-			
+//Get rent and utilities
 			System.out.println("Now we can properly plan your budget sheet. Thirdly,"
 					+ "please enter the total of your rent and utilities: ");
 			double rentAndutilities = sc.nextDouble();
-			
+//Get excess expense
 			System.out.println("How much money do you spend on yourself?(i.e. eating out,"
 					+ "shopping, gas): ");
 			double monthlyExcessspending = sc.nextDouble();
-			
+//Get monthly cost of groceries
 			System.out.println("Finally, about how much would you say that you "
 					+ "spend on groceries every month?: ");
 			double monthlyGrocerycost = sc.nextDouble();
