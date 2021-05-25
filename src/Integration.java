@@ -1,3 +1,7 @@
+/**
+ * @author Joseph Serrano
+ *
+ */
 /* This will be a program that will show my understanding of COP2006
  * My app will calculate the total of a meal and/or provide the user 
  * with budgeting advice. It was an app that I had originally developed
@@ -9,11 +13,6 @@ import java.text.DecimalFormat;
 /*This is going to be a package that contains proper formatting.
  * I will be using this one as a means to format any currencies that 
  * I have to calculate. 
- */
-
-/**
- * @author Joseph Serrano
- *
  */
 
 public class Integration {
