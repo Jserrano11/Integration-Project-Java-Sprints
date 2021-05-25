@@ -22,14 +22,16 @@ public class Integration {
 	private static Scanner sc;
 
 	public static void main(String[] args) {
+		
 		int countDown;
+		
 		for(countDown = 3; countDown >= 0; countDown--) {
 			System.out.println(countDown);
 		}
-		/*The term variable is some sort of data that has an allocated portion of memory
+		/*The term VARIABLE is some sort of data that has an allocated portion of memory
 		 * and is typically used to store values and information to use within your program
 		 */
-		/*Scope in computer programming typically refers to the idea that a variable can only be 
+		/*SCOPE in computer programming typically refers to the idea that a variable can only be 
 		 * accessed within a certain method.
 		 */
 		System.out.println("Done!");
@@ -45,94 +47,117 @@ public class Integration {
 		 * or put in a variable. 
 		 */
 		GreetingObject.Greet(userName);
+		
+		boolean continueProgram = true; 
+		
+			while(continueProgram) {
 /*Get the input of whether user would like to calculate a meal, budget,or exit*/
-		System.out.println("To calculate the total for a meal, enter meal,"
-				+ "if you would like to budget please type budget now."
-				+ " If you would like to close the app, type exit.");
-		String optionSelect = sc.next();
+			System.out.println("To calculate the total for a meal, enter meal,"
+					+ "if you would like to budget please type budget now."
+					+ " If you would like to close the app, type exit.");
+			String optionSelect = sc.next();
+			if(optionSelect.equals("Meal") || optionSelect.equals("meal")) {
 
 //Get the total price of the meal
-			System.out.println("First, enter the total price of your meal: ");
-			double mealPrice = sc.nextDouble();
+				System.out.println("First, enter the total price of your meal: ");
+				double mealPrice = sc.nextDouble();
 //Get the Local Sales Tax in the area
-			System.out.println("Next, enter your local sales tax percentage(i.e. "
-					+ ".06): ");
-			double taxPercentage = sc.nextDouble();
+				System.out.println("Next, enter your local sales tax percentage(i.e. "
+						+ ".06): ");
+				double taxPercentage = sc.nextDouble();
 //Get the desired tip percentage
-			System.out.println("Finally, enter your desired tip percentage(i.e. "
-					+ ".15, .18, or .2): ");
-			double tipPercentage = sc.nextDouble();
-			/*calculate total without tip and total without tax and add that to your
-			 * original meal price.*/
-			double totalWithouttip = (mealPrice * taxPercentage);
-		
-			double totalWithouttax = (mealPrice * tipPercentage);
+				System.out.println("Finally, enter your desired tip percentage(i.e. "
+						+ ".15, .18, or .2): ");
+				double tipPercentage = sc.nextDouble();
+		/*calculate total without tip and total without tax and add that to your
+		 * original meal price.*/
+				double totalWithouttip = (mealPrice * taxPercentage);
 			
-			double totalPrice = (totalWithouttip + totalWithouttax + mealPrice);
-//Output total cost of meal
-			System.out.println("The total cost of your meal is going to be: " + df2.format(totalPrice));
-			/*Test wheter or not the user wants to also budget or exit the app now*/
-			System.out.println("Did you also need help budgeting your finances " + userName+"?");
-			System.out.println("If so, please type yes, otherwise please type no now.");
-			String testVariable = sc.next();
-			
-			if (testVariable.equals("Yes") || testVariable.equals("yes")) {
-				optionSelect.equals("Budget");
-		}
-			if (testVariable.equals("No") || testVariable.equals("no")) {
-				optionSelect.equals("Exit");
-			}
-//Budgeting portion of the app
-		if (optionSelect.equals("Budget") || optionSelect.equals("budget")); {
-			
-			System.out.println("The next series of questions will be within the "
-					+ "time frame of a monthly basis.");
-//Get monthly income from user
-			System.out.println("Start now by entering your monthly income: ");
-			double monthlyIncome = sc.nextDouble();
-//Get extra money or disposable income
-			System.out.println("Now, is there any money that you make on the side?"
-					+ "(i.e. disposable income): ");
-			double disposableIncome = sc.nextDouble();
-//Get rent and utilities
-			System.out.println("Now we can properly plan your budget sheet. Thirdly,"
-					+ "please enter the total of your rent and utilities: ");
-			double rentAndutilities = sc.nextDouble();
-//Get excess expense
-			System.out.println("How much money do you spend on yourself?(i.e. eating out,"
-					+ "shopping, gas): ");
-			double monthlyExcessspending = sc.nextDouble();
-//Get monthly cost of groceries
-			System.out.println("Finally, about how much would you say that you "
-					+ "spend on groceries every month?: ");
-			double monthlyGrocerycost = sc.nextDouble();
-			
-			double income = (monthlyIncome + disposableIncome);
-					
-			double expenses = (rentAndutilities + monthlyExcessspending + monthlyGrocerycost);
-			
-			double amountBudgeted = (income - expenses);
-			
-			double principle = (amountBudgeted * .10);
-			double dividendRate = .04;
-			double timeInyears = 3;
-			double compoundInterest = (principle * Math.pow(1+(dividendRate / 100 * timeInyears), amountBudgeted));
-			
-			if (expenses > income) {
-				System.out.println(userName + ", you need to start saving: $" + df2.format(-amountBudgeted));
-			}
-			if (expenses < income) {
-				System.out.println(userName + ", you appear to have an extra: $" + df2.format(amountBudgeted));
+				double totalWithouttax = (mealPrice * tipPercentage);
 				
-				System.out.println("If you put just 10% of this extra money into a "
-						+ "normal dividend yield account, you will make an extra $" + df2.format(compoundInterest) + " in 3 years!");
+				double totalPrice = (totalWithouttip + totalWithouttax + mealPrice);
+//Output total cost of meal
+				System.out.println("The total cost of your meal is going to be: " + df2.format(totalPrice));
+		
+		/*Test whether or not the user wants to also budget or exit the app now*/
+				System.out.println("Did you also need help budgeting your finances " + userName+"?");
+				System.out.println("If so, please type yes, otherwise please type no now.");
+	
+				String testVariable = sc.next();
+				
+				if (testVariable.equals("No") || testVariable.equals("no")) {
+					break;
+				}
+				
+				if (testVariable.equals("Yes") || testVariable.equals("yes")) {
+					optionSelect.equals("Budget");
+					continueProgram = true;
+					
+				}
+			}
+	//Budgeting portion of the app
+			if (optionSelect.equals("Budget") || optionSelect.equals("budget")) {
+
+				System.out.println("The next series of questions will be within the "
+						+ "time frame of a monthly basis.");
+	//Get monthly income from user
+				System.out.println("Start now by entering your monthly income: ");
+				double monthlyIncome = sc.nextDouble();
+	//Get extra money or disposable income
+				System.out.println("Now, is there any money that you make on the side?"
+						+ "(i.e. disposable income): ");
+				double disposableIncome = sc.nextDouble();
+	//Get rent and utilities
+				System.out.println("Now we can properly plan your budget sheet. Thirdly,"
+						+ "please enter the total of your rent and utilities: ");
+				double rentAndutilities = sc.nextDouble();
+	//Get excess expense
+				System.out.println("How much money do you spend on yourself?(i.e. eating out,"
+						+ "shopping, gas): ");
+				double monthlyExcessspending = sc.nextDouble();
+	//Get monthly cost of groceries
+				System.out.println("Finally, about how much would you say that you "
+						+ "spend on groceries every month?: ");
+				double monthlyGrocerycost = sc.nextDouble();
+				
+				double income = (monthlyIncome + disposableIncome);
+						
+				double expenses = (rentAndutilities + monthlyExcessspending + monthlyGrocerycost);
+				
+				double amountBudgeted = (income - expenses);
+				
+				double principle = (amountBudgeted * .10);
+				double dividendRate = .04;
+				double timeInyears = 3;
+				double compoundInterest = (principle * Math.pow(1+(dividendRate / 100 * timeInyears), amountBudgeted));
+				
+				if (expenses > income) {
+					System.out.println(userName + ", you need to start saving: $" + df2.format(-amountBudgeted));
+				}
+				if (expenses < income) {
+					System.out.println(userName + ", you appear to have an extra: $" + df2.format(amountBudgeted));
+					
+					System.out.println("If you put just 10% of this extra money into a "
+							+ "normal dividend yield account, you will make an extra $" + df2.format(compoundInterest) + " in 3 years!");
+				}
+				System.out.println("Are you completely finished? If so, enter yes. if you would like to run the app again,"
+						+ " please type no now.");
+				String lastVariable = sc.next();
+				
+				if(lastVariable.equals ("yes") || lastVariable.equals ("Yes")) {
+					break;
+				}
+				if(lastVariable.equals ("no") || lastVariable.equals("No")) {
+					continueProgram = true;
+				}
+				
 			}
 			
+			if (optionSelect.equals("Exit") || optionSelect.equals("exit")) {
+				continueProgram = false;
+			}
 			
-		if (optionSelect.equals("Exit") || optionSelect.equals("exit")) {
-			System.out.println("Okay, thank you, Have great day!");
-		}
+			}
+				System.out.println("Thank you "+ userName +", have an amazing rest of your day!");
 		}
 	}
-	
-}
