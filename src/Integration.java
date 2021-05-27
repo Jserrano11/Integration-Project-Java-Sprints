@@ -33,6 +33,36 @@ public class Integration {
 		/*SCOPE in computer programming typically refers to the idea that a variable can only be 
 		 * accessed within a certain method.
 		 */
+		
+		/*Java Built-in Data Types 
+		 * There are 8 java built in data types and they go as following:
+		 *  
+		 * Boolean: Returns true or false values based on relational statements. This data
+		 * type represents one bit of information.
+		 * 
+		 * Byte: An 8-bit integer. It has a minimum value of -128 and a maximum 
+		 * value of 127(inclusive). Also not really used either, instead people
+		 * use int too. 
+		 * 
+		 * Char: A single 16-bit unicode character. it has a minimum value of "\u0000"(or 0) and a maximum
+		 * value of "\uffff"(or 65,535 inclusive). Used generally for showing specific character values. 
+		 * 
+		 * Short: A 16 bit integer. It has a minimum value of -32,768 and a maximum
+		 * value of 32,767(inclusive).  Not really used any more, should instead use
+		 * int.
+		 * 
+		 * Int: The int data type is a 32-bit integer value. It has a minimum value of -2^31 and a maximum
+		 * value of 2^31-1. Generally the used number data type for whole numbers. 
+		 * 
+		 * Long: A 64 bit integer. The minimum is the value of -2^63 and the maximum value
+		 * is 2^63-1.
+		 * 
+		 * Float: A precision based 32 bit floating point number. This means that 
+		 * its minimum and maximum value are so big its not really known. You should
+		 * instead use double.  
+		 * 
+		 * Double: The double data type is a 32-bit floating point number. The range is also
+		 * unknown, but this is double the accuracy of a floating point number. */
 		System.out.println("Done!");
 		
 		sc = new Scanner(System.in);
@@ -86,6 +116,8 @@ public class Integration {
 				
 				if (testVariable.equals("No") || testVariable.equals("no")) {
 					break;
+				/*The BREAK statement generally once hit within code, can only
+				 * be used on loops to exit the loop and bring you just outside of it.*/
 				}
 				
 				if (testVariable.equals("Yes") || testVariable.equals("yes")) {
