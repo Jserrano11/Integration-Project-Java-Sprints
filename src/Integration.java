@@ -2,10 +2,7 @@
  * @author Joseph Serrano
  *
  */
-/* This will be a program that will show my understanding of COP2006
- * My app will calculate the total of a meal and/or provide the user 
- * with budgeting advice. It was an app that I had originally developed
- * within COP 1500.*/
+import java.util.Random;
 import java.util.Scanner;
 /*Java.util.Scanner  is going to be the import that allows the Scanner class
  * allowing us to recieve input from the user.*/
@@ -15,12 +12,19 @@ import java.text.DecimalFormat;
  * I have to calculate. 
  */
 
+
+//result = testCondition ? trueValue 1st : falseValue 2nd
 public class Integration {
-	
 	
 	private static Scanner sc;
 
 	public static void main(String[] args) {
+		
+		class Greeting {
+			public void Greet(String userName) {
+				System.out.println("Hello "+userName+", great to see you!");
+			}
+		}
 		
 		int countDown;
 		
@@ -62,14 +66,26 @@ public class Integration {
 		 * instead use double.  
 		 * 
 		 * Double: The double data type is a 32-bit floating point number. The range is also
-		 * unknown, but this is double the accuracy of a floating point number. */
+		 * unknown, but this is double the accuracy of a floating point number. 
+		 * */
+		
+		/*Operator precedence is the idea that java evaluates from the highest point of precedence to the
+		 * lowest. Up top, you have your increment and decrement operators which appear with the highest precedence. 
+		 * Then comes multiplicative and then comes additive just a little lower on the precedence scale. We then see 
+		 * an instance of the relational and equality. This means that Java will evaluate out multiplication and addition 
+		 * before it goes to the conditional or equality statement. If operators have the same or equal precedence, rules 
+		 * will decide what is next. Operators that assign are evaluated from right to left and the binary operators are 
+		 * evaluated from left to right. */
+		
+		/*Important Operations that were not used within my application -
+		 *MODULUS - % This will do the number divided by the other and return the remainder*/
 		System.out.println("Done!");
 		
 		sc = new Scanner(System.in);
-		
+		Random randomInt = new Random();
 		DecimalFormat df2 = new DecimalFormat("#.##");
+		System.out.println("Hi there, please start by entering your name!");
 		Greeting GreetingObject = new Greeting ();
-		System.out.println("Hello, please start by entering your name now");
 		final String userName = sc.nextLine();
 		/*The keyword FINAL in essence makes the value 
 		 * not able to be edited after it has been entered
@@ -77,118 +93,196 @@ public class Integration {
 		 */
 		GreetingObject.Greet(userName);
 		
-		boolean continueProgram = true; 
+		int x = 0;
+		do {
+			System.out.println("This is a do while loop, it will continue to do this "
+					+ "until a specified condition is met. It will read the while statement"
+					+ " at the bottom and keep looping this do code until the while statement"
+					+ " is fulfilled.");
+			x++;
+			/*This x++ operator will add one to the integer x breaking the do while loop.
+			 * We could do this a similar way by doing the += operator and putting "x += 1"
+			 * will have the same effect as the incremental operator x++.*/
+		}
 		
-			while(continueProgram) {
+		while(x < 1);
+		
+		System.out.println("Would you like to see a switch statement?");
+		String operationSelection;
+		
+		operationSelection = sc.nextLine();
+		String opSelect = operationSelection.toUpperCase();
+		
+		switch(opSelect) {
+			case ("YES"):
+				optionYes();
+				break;
+			case "NO":
+				optionNo();
+				break;
+		}
+		
+		/*These String escape sequences can be helpful, below will tab the sentence forward
+		 * (place 4 spaces in front of it) and then put double quotations around the word 
+		 * number, pretty cool huh? */
+		System.out.println("\t Welcome, here, please take this \"number\" so we can identify you!");
+		System.out.println(randomInt.nextInt(10));
+		
+		System.out.println("Enter two strings you wish to compare");
+		String a = sc.nextLine();
+		String b = sc.nextLine();
+		
+		System.out.println("The variable "+a+" and "+b+" are going to have their length compared. Where"
+				+ " it should tell you the total amount of characters in both a and b. "
+				+ "Then whether a or b comes first is compared. If a is before b, it will print before,"
+				+ "if a is after b, it will print after. ");
+		
+		System.out.println("The sum of your lengths are "+(a.length() + b.length())+" characters long.");
+		String comparedAB;
+		comparedAB = (a.compareTo(b)<=0) ? "A comes before B" : "A comes after B";
+		System.out.println(comparedAB);
+		
+		/*The == sign mainly compares strings whether or not 
+		 * they are they are the same object not compare the value being held
+		 * within the variable. So you can use the "==" on numbers such as
+		 * integers and doubles, but should never be used on Strings, use .equals
+		 * instead. */
+		
+		System.out.println("Please enter a number to convert or cast to a double.");
+		int conversion = sc.nextInt();
+		double d = conversion;
+		System.out.println("Your new number is: "+d);
+		
+		/*Casting is when you alter and assign a value from one data type to another within java.
+		 * In this scenario, I used casting to convert and integer taken from the user, and to 
+		 * cast it to a double to show the user what it does within this part of the app. */
+		
+		boolean continueProgram = true;
+		
+		while(continueProgram) {
 /*Get the input of whether user would like to calculate a meal, budget,or exit*/
-			System.out.println("To calculate the total for a meal, enter meal,"
-					+ "if you would like to budget please type budget now."
-					+ " If you would like to close the app, type exit.");
-			String optionSelect = sc.next();
-			if(optionSelect.equals("Meal") || optionSelect.equals("meal")) {
+		System.out.println("To calculate the total for a meal, enter meal,"
+				+ "if you would like to budget please type budget now."
+				+ " If you would like to close the app, type exit.");
+		String optionSelect = sc.next();
+		String varSelect = optionSelect.toUpperCase();
+		if(varSelect.equals("MEAL")) {
 
 //Get the total price of the meal
-				System.out.println("First, enter the total price of your meal: ");
-				double mealPrice = sc.nextDouble();
+			System.out.println("First, enter the total price of your meal: ");
+			double mealPrice = sc.nextDouble();
 //Get the Local Sales Tax in the area
-				System.out.println("Next, enter your local sales tax percentage(i.e. "
-						+ ".06): ");
-				double taxPercentage = sc.nextDouble();
+			System.out.println("Next, enter your local sales tax percentage(i.e. "
+					+ ".06): ");
+			double taxPercentage = sc.nextDouble();
 //Get the desired tip percentage
-				System.out.println("Finally, enter your desired tip percentage(i.e. "
-						+ ".15, .18, or .2): ");
-				double tipPercentage = sc.nextDouble();
-		/*calculate total without tip and total without tax and add that to your
-		 * original meal price.*/
-				double totalWithouttip = (mealPrice * taxPercentage);
+			System.out.println("Finally, enter your desired tip percentage(i.e. "
+					+ ".15, .18, or .2): ");
+			double tipPercentage = sc.nextDouble();
+	/*calculate total without tip and total without tax and add that to your
+	 * original meal price.*/
 			
-				double totalWithouttax = (mealPrice * tipPercentage);
-				
-				double totalPrice = (totalWithouttip + totalWithouttax + mealPrice);
-//Output total cost of meal
-				System.out.println("The total cost of your meal is going to be: " + df2.format(totalPrice));
+			double totalWithouttip = (mealPrice * taxPercentage);
 		
-		/*Test whether or not the user wants to also budget or exit the app now*/
-				System.out.println("Did you also need help budgeting your finances " + userName+"?");
-				System.out.println("If so, please type yes, otherwise please type no now.");
-	
-				String testVariable = sc.next();
-				
-				if (testVariable.equals("No") || testVariable.equals("no")) {
-					break;
-				/*The BREAK statement generally once hit within code, can only
-				 * be used on loops to exit the loop and bring you just outside of it.*/
-				}
-				
-				if (testVariable.equals("Yes") || testVariable.equals("yes")) {
-					optionSelect.equals("Budget");
-					continueProgram = true;
-					
-				}
-			}
-	//Budgeting portion of the app
-			if (optionSelect.equals("Budget") || optionSelect.equals("budget")) {
-
-				System.out.println("The next series of questions will be within the "
-						+ "time frame of a monthly basis.");
-	//Get monthly income from user
-				System.out.println("Start now by entering your monthly income: ");
-				double monthlyIncome = sc.nextDouble();
-	//Get extra money or disposable income
-				System.out.println("Now, is there any money that you make on the side?"
-						+ "(i.e. disposable income): ");
-				double disposableIncome = sc.nextDouble();
-	//Get rent and utilities
-				System.out.println("Now we can properly plan your budget sheet. Thirdly,"
-						+ "please enter the total of your rent and utilities: ");
-				double rentAndutilities = sc.nextDouble();
-	//Get excess expense
-				System.out.println("How much money do you spend on yourself?(i.e. eating out,"
-						+ "shopping, gas): ");
-				double monthlyExcessspending = sc.nextDouble();
-	//Get monthly cost of groceries
-				System.out.println("Finally, about how much would you say that you "
-						+ "spend on groceries every month?: ");
-				double monthlyGrocerycost = sc.nextDouble();
-				
-				double income = (monthlyIncome + disposableIncome);
-						
-				double expenses = (rentAndutilities + monthlyExcessspending + monthlyGrocerycost);
-				
-				double amountBudgeted = (income - expenses);
-				
-				double principle = (amountBudgeted * .10);
-				double dividendRate = .04;
-				double timeInyears = 3;
-				double compoundInterest = (principle * Math.pow(1+(dividendRate / 100 * timeInyears), amountBudgeted));
-				
-				if (expenses > income) {
-					System.out.println(userName + ", you need to start saving: $" + df2.format(-amountBudgeted));
-				}
-				if (expenses < income) {
-					System.out.println(userName + ", you appear to have an extra: $" + df2.format(amountBudgeted));
-					
-					System.out.println("If you put just 10% of this extra money into a "
-							+ "normal dividend yield account, you will make an extra $" + df2.format(compoundInterest) + " in 3 years!");
-				}
-				System.out.println("Are you completely finished? If so, enter yes. if you would like to run the app again,"
-						+ " please type no now.");
-				String lastVariable = sc.next();
-				
-				if(lastVariable.equals ("yes") || lastVariable.equals ("Yes")) {
-					break;
-				}
-				if(lastVariable.equals ("no") || lastVariable.equals("No")) {
-					continueProgram = true;
-				}
-				
-			}
+			double totalWithouttax = (mealPrice * tipPercentage);
 			
-			if (optionSelect.equals("Exit") || optionSelect.equals("exit")) {
-				continueProgram = false;
-			}
+			double totalPrice = (totalWithouttip + totalWithouttax + mealPrice);
 			
-			}
-				System.out.println("Thank you "+ userName +", have an amazing rest of your day!");
+//Output total cost of meal
+			System.out.println("The total cost of your meal is going to be: "+"$"+df2.format(totalPrice));
 		}
+//Budgeting portion of the app
+		if (varSelect.equals("BUDGET")) {
+
+			System.out.println("The next series of questions will be within the "
+					+ "time frame of a monthly basis.");
+//Get monthly income from user
+			System.out.println("Start now by entering your monthly income: ");
+			double monthlyIncome = sc.nextDouble();
+//Get extra money or disposable income
+			System.out.println("Now, is there any money that you make on the side?"
+					+ "(i.e. disposable income): ");
+			double disposableIncome = sc.nextDouble();
+//Get rent and utilities
+			System.out.println("Now we can properly plan your budget sheet. Thirdly,"
+					+ "please enter the total of your rent and utilities: ");
+			double rentAndutilities = sc.nextDouble();
+//Get excess expense
+			System.out.println("How much money do you spend on yourself?(i.e. eating out,"
+					+ "shopping, gas): ");
+			double monthlyExcessspending = sc.nextDouble();
+//Get monthly cost of groceries
+			System.out.println("Finally, about how much would you say that you "
+					+ "spend on groceries every month?: ");
+			double monthlyGrocerycost = sc.nextDouble();
+			
+			double income = (monthlyIncome + disposableIncome);
+					
+			double expenses = (rentAndutilities + monthlyExcessspending + monthlyGrocerycost);
+			
+			double amountBudgeted = (income - expenses);
+			
+			double principle = (amountBudgeted * .10);
+			double dividendRate = .04;
+			double timeInYears = 3;
+			/*The METHOD CALL is the "compoundInterest" typed out before the parentheses
+			 * and the arguments.*/
+			double cI = compoundInterest(principle, dividendRate, timeInYears, amountBudgeted); 
+			/*This compoundInterest problem uses the Math class by using the power function. 
+			 * It takes the numbers after Math.pow.*/
+			
+			/*Here in the cI variable, the METHOD CALL to compoundInterest takes the ARGUMENTS principle, dividendRate, and timeInYears
+			 * are going to be the*/
+			if (expenses > income) {
+				System.out.println(userName + ", you need to start saving: $" + df2.format(-amountBudgeted));
+			}
+			if (expenses < income) {
+				System.out.println(userName + ", you appear to have an extra: $" + df2.format(amountBudgeted));
+				
+				System.out.println("If you put just 10% of this extra money into a "
+						+ "normal dividend yield account, you will make an extra $" + df2.format(cI) + " in 3 years!");
+			}
+			System.out.println("Are you completely finished? If so, enter yes. if you would like to run the app again,"
+					+ " please type no now.");
+			String lastVariable = sc.next();
+			
+			if(lastVariable.equals ("yes") || lastVariable.equals ("Yes")) {
+				break;
+				/*The BREAK statement generally jumps out of a switch or loop. 
+				 * The whole loop is terminated and the program continues to 
+				 * any code just after outside of the loop brackets.*/
+			}
+			if(lastVariable.equals ("no") || lastVariable.equals("No")) {
+				continue;
+			/*The CONTINUE statement continues and completes a full iteration
+			 * within the loop as long as a specified condition occurs. Once it gets this, it will not run
+			 * anything below this line, and will circle back to the top of the loop. */
+			}
+			
+		}
+		
+		if(varSelect.equals("EXIT")) {
+			continueProgram = false;
+		}
+		
+		}
+			System.out.println("Thank you "+ userName +", have an amazing rest of your day!");
+		}
+
+	private static void optionYes() {
+		System.out.println("Yep, this is a switch statement.");
+		
+	}
+
+	private static void optionNo() {
+		System.out.println("You may not have wanted it but you still used the switch"
+				+ " statement :)");	
+	}
+	
+	public static double compoundInterest(double principle, double dividendRate, double timeInYears, double amountBudgeted) {
+		return (principle * Math.pow(1+(dividendRate / 100 * timeInYears), amountBudgeted));
+		/*The method header is going to be the whole line going from public static all the way to the end parentheses just
+		 * after timeInYears. 
+		 * The parameters are the double principle, double dividendRate, and double timeInYears.*/
+	}
 	}
